@@ -1,0 +1,358 @@
+<!-- index.html (Cloudflare Pages — techtuition.ai) -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>techtuition: for the next era of distributed teams</title>
+  <meta name="description" content="Calm, scalable content ops—AI-enabled, systems-led, built for distributed teams." />
+  <meta property="og:title" content="techtuition: for the next era of distributed teams" />
+  <meta property="og:description" content="Calm, scalable content ops—AI-enabled, systems-led, built for distributed teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://techtuition.ai" />
+  <meta property="og:image" content="https://techtuition.ai/techtuition_banner.jpeg" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── tokens — light mode default (the sunlit clearing) ─── */
+    :root {
+      --ink:        #1a1814;
+      --paper:      #f4f2ec;
+      --card:       #fffff2;
+      --card-lt:    #e8e2d6;
+      --warm-mid:   #e8e2d6;
+      --gold:       #8a6418;
+      --gold-lt:    #e6c47d;
+      --throat:     #1d5f75;
+      --throat-lt:  #32849d;
+      --ochre:      #8a6418;
+      --g-centre:   #424d38;
+      --root:       #6b1f3a;
+      --muted:      #7a7163;
+      --line:       rgba(26,24,20,.12);
+      --r:          6px;
+      --serif:      'Exo 2', system-ui, sans-serif;
+      --sans:       'DM Sans', system-ui, sans-serif;
+    }
+
+    /* ─── dark mode ─── */
+    [data-theme="dark"] {
+      --ink:        #f4f2ec;
+      --paper:      #010003;
+      --card:       #151515;
+      --card-lt:    #20211e;
+      --gold:       #e6c47d;
+      --gold-lt:    #e6c47d;
+      --throat:     #32849d;
+      --throat-lt:  #4a9ab5;
+      --ochre:      #c49a3c;
+      --g-centre:   #707d64;
+      --root:       #9d4865;
+      --muted:      #b5ad9e;
+      --line:       rgba(240,237,230,.1);
+    }
+
+    [data-theme="dark"] .nav { background: #1a1e2a; }
+    [data-theme="dark"] .card { background: #22273a; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* ─── nav ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 2rem;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -.02em;
+    }
+
+    .brand span { color: var(--throat); }
+
+    .navlinks { display: flex; align-items: center; gap: 1.6rem; }
+
+    .navlinks a {
+      font-size: .85rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+
+    .navlinks a:hover { color: var(--throat); }
+
+    .navlinks .pill {
+      background: var(--throat);
+      color: var(--paper);
+      padding: .42rem 1rem;
+      border-radius: 100px;
+      font-weight: 500;
+      transition: background .2s;
+    }
+
+    .navlinks .pill:hover {
+      background: var(--throat-lt);
+      outline: 1.5px solid var(--gold-lt);
+      outline-offset: 1px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1.5px solid var(--line);
+      border-radius: 100px;
+      cursor: pointer;
+      padding: .35rem .6rem;
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--muted);
+      transition: border-color .2s, color .2s;
+    }
+
+    .theme-toggle:hover { border-color: var(--gold-lt); color: var(--ink); }
+
+    /* ─── page ─── */
+    .page { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+
+    /* ─── hero ─── */
+    .hero {
+      padding: 6rem 0 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: .88rem;
+      font-weight: 300;
+      color: var(--throat);
+      margin-bottom: 1rem;
+      letter-spacing: .06em;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      font-weight: 700;
+      color: var(--ink);
+      max-width: 680px;
+      margin-bottom: 1.4rem;
+      border-bottom: 2px solid var(--gold-lt);
+      padding-bottom: .6rem;
+      display: inline-block;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 2.4rem;
+      font-weight: 300;
+    }
+
+    .ctaRow { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+
+    .micro { font-size: .78rem; color: var(--muted); letter-spacing: .03em; }
+
+    /* ─── buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center;
+      padding: .65rem 1.4rem;
+      border-radius: var(--r);
+      font-family: var(--sans);
+      font-size: .88rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .2s;
+      border: 1.5px solid transparent;
+    }
+
+    .btn.primary { background: var(--throat); color: #fff; border-color: var(--throat); }
+    .btn.primary:hover { background: var(--throat-lt); border-color: var(--throat-lt); }
+    .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn.ghost:hover { border-color: var(--throat); color: var(--throat); }
+
+    /* ─── sections ─── */
+    section { margin-top: 3.5rem; }
+
+    /* ─── cards ─── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 2.2rem 2.4rem;
+    }
+
+    .card h2 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -.025em;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .card p { color: var(--muted); line-height: 1.7; }
+
+    /* ─── work items ─── */
+    .item {
+      margin-top: 1.6rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .item h3 {
+      font-family: var(--sans);
+      font-size: .92rem;
+      font-weight: 500;
+      letter-spacing: .01em;
+      margin-bottom: .45rem;
+      color: var(--ink);
+    }
+
+    .item p { font-size: .9rem; color: var(--muted); margin-bottom: .7rem; }
+
+    .textLink {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--throat);
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: color .2s;
+    }
+
+    .textLink:hover { color: var(--gold-lt); }
+
+    /* ─── contact ─── */
+    .contactRow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; }
+
+    /* ─── footer ─── */
+    .footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .6rem;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    .footer a { color: var(--throat); text-decoration: none; }
+    .footer a:hover { color: var(--gold-lt); }
+
+    /* ─── misc ─── */
+    .muted { color: var(--muted); }
+
+    /* ─── animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero .kicker  { animation: fadeUp .5s ease both; animation-delay: .05s; }
+    .hero h1       { animation: fadeUp .5s ease both; animation-delay: .12s; }
+    .hero .subhead { animation: fadeUp .5s ease both; animation-delay: .2s; }
+    .hero .ctaRow  { animation: fadeUp .5s ease both; animation-delay: .28s; }
+    .hero .micro   { animation: fadeUp .5s ease both; animation-delay: .34s; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/">tech<span>tuition</span></a>
+    <nav class="navlinks">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener" class="pill">join waitlist</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <p class="kicker">techtuition</p>
+      <h1>for the next era of distributed teams</h1>
+      <p class="subhead">calm, scalable content ops — AI-enabled, systems-led, built for distributed teams.</p>
+      <div class="ctaRow">
+        <a class="btn primary" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join the workshop waitlist</a>
+        <a class="btn ghost" href="#contact">contact</a>
+      </div>
+      <p class="micro">limited seats · beta pricing · practical, tool-agnostic</p>
+    </section>
+
+    <section id="about" class="card">
+      <h2>tiny about</h2>
+      <p>techtuition trains and embeds with teams to design calm, scalable content operations — AI-enabled, systems-led, and built for distributed work. enabling content ops foundations, AI content systems, governance, and collaboration practices that keep work clear and regenerative.</p>
+    </section>
+
+    <section id="work" class="card">
+      <h2>work with techtuition</h2>
+
+      <div class="item">
+        <h3>beta workshop (paid)</h3>
+        <p>a live, hands-on session on content ops + AI content systems, governance, and collaboration — leave with guidance, templates, and a playbook.</p>
+        <a class="textLink" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join the waitlist →</a>
+      </div>
+
+      <div class="item">
+        <h3>embedded education</h3>
+        <p>deiadora plugs into your team for a defined period and builds the operating patterns with you.</p>
+        <a class="textLink" href="#contact">contact to discuss →</a>
+      </div>
+
+      <div class="item">
+        <h3>mentorship</h3>
+        <p>1:1 or small-group support for maintainers and leads building durable team systems.</p>
+        <a class="textLink" href="#contact">contact to discuss →</a>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>contact</h2>
+      <p class="muted">for embedded education, mentorship, or bringing the beta to your org.</p>
+      <div class="contactRow">
+        <a class="btn primary" href="/cdn-cgi/l/email-protection#8ee6ebe2e2e1cefaebede6fafbe7fae7e1e0a0efe7b1fdfbece4ebedfab3faebede6fafbe7fae7e1e0abbcbee7e0fffbe7fcf7">email <span class="__cf_email__" data-cfemail="69010c050506291d0c0a011d1c001d000607470800">[email&#160;protected]</span></a>
+        <a class="btn ghost" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join waitlist</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>techtuition · <span class="muted">train · embed · enable</span></p>
+      <p class="muted">© <span id="year"></span> · <a href="https://deiadora.com">deiadora.com</a></p>
+    </footer>
+  </main>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const toggle = document.getElementById("themeToggle");
+    const saved = localStorage.getItem("theme-techtuition") || "light";
+    document.documentElement.setAttribute("data-theme", saved);
+    toggle.textContent = saved === "dark" ? "☀️" : "🌙";
+
+    toggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme-techtuition", next);
+      toggle.textContent = next === "dark" ? "☀️" : "🌙";
+    });
+  </script>
+</body>
+</html>
