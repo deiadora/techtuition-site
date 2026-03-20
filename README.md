@@ -1,4 +1,3 @@
-# techtuition-site
 # techtuition
 
 **for the next era of distributed teams**
