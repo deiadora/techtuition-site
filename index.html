@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>techtuition: for the next era of distributed teams</title>
-  <meta name="description" content="Human-AI collaboration consulting for complexity, coordination, and AI-supported work." />
-  <meta property="og:title" content="techtuition: for the next era of distributed teams" />
-  <meta property="og:description" content="Human-AI collaboration consulting for complexicity, coordination, and AI-supported work." />
+  <title>techtuition — the framework underneath the framework</title>
+  <meta name="description" content="A multiscalar, quantum-sequenced approach to how individuals, teams, and organisations actually cohere. Practical implications for operations, collaboration, and governance." />
+  <meta property="og:title" content="techtuition — the framework underneath the framework" />
+  <meta property="og:description" content="Fractal awareness for the next era of distributed teams." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://techtuition.ai" />
   <meta property="og:image" content="https://techtuition.ai/techtuition_banner.jpeg" />
@@ -16,46 +16,65 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
-    /* ─── tokens — light mode default (the sunlit clearing) ─── */
     :root {
       --ink:        #1a1814;
       --paper:      #f4f2ec;
       --card:       #fffff2;
       --card-lt:    #e8e2d6;
-      --warm-mid:   #e8e2d6;
       --gold:       #8a6418;
-      --gold-lt:    #e6c47d;
-      --throat:     #1d5f75;
-      --throat-lt:  #32849d;
-      --ochre:      #8a6418;
-      --g-centre:   #424d38;
-      --root:       #6b1f3a;
+
+      /* ── spectrum variables ── */
+      --node-0:     #0c1516;
+      --node-1:     #6b2d1a;
+      --node-2:     #9d4418;
+      --node-3:     #c49a3c;
+      --node-4:     #7a9e2a;
+      --node-5:     #2d6a1f;
+      --node-6:     #0f6e56;
+      --node-7:     #1a6b9e;
+      --node-8:     #3c3489;
+      --node-9:     #2d1a4e;
+
+      --accent:     #1a6b9e;  /* node-7 · expression · egg of life · open sky */
+      --accent-lt:  #32849d;
+
       --muted:      #7a7163;
       --line:       rgba(26,24,20,.12);
-      --r:          6px;
+      --r:          8px;
       --serif:      'Exo 2', system-ui, sans-serif;
       --sans:       'DM Sans', system-ui, sans-serif;
     }
 
-    /* ─── dark mode ─── */
     [data-theme="dark"] {
       --ink:        #f4f2ec;
       --paper:      #010003;
       --card:       #151515;
       --card-lt:    #20211e;
       --gold:       #e6c47d;
-      --gold-lt:    #e6c47d;
-      --throat:     #32849d;
-      --throat-lt:  #4a9ab5;
-      --ochre:      #c49a3c;
-      --g-centre:   #707d64;
-      --root:       #9d4865;
+      --accent:     #1a6b9e;
+      --accent-lt:  #32849d;
       --muted:      #b5ad9e;
       --line:       rgba(240,237,230,.1);
     }
 
-    [data-theme="dark"] .nav { background: #151515 }
-    [data-theme="dark"] .card { background: #010003; }
+    [data-theme="dark"] .nav  { background: #010003; }
+    [data-theme="dark"] .card { background: #151515; }
+
+    [data-theme="light"] {
+      --ink:        #1a1814;
+      --paper:      #f4f2ec;
+      --card:       #fffff2;
+      --card-lt:    #e8e2d6;
+      --muted:      #7a7163;
+      --gold:       #8a6418;
+      --accent:     #1a6b9e;
+      --accent-lt:  #32849d;
+      --line:       rgba(26,24,20,.12);
+    }
+
+    [data-theme="light"] .nav  { background: #f4f2ec; }
+    [data-theme="light"] .card { background: #fffff2; }
+    [data-theme="light"] .brand { color: #1a1814; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -80,7 +99,7 @@
       letter-spacing: -.02em;
     }
 
-    .brand span { color: var(--throat); }
+    .brand span { color: var(--accent); }
 
     .navlinks { display: flex; align-items: center; gap: 1.6rem; }
 
@@ -93,10 +112,10 @@
       transition: color .2s;
     }
 
-    .navlinks a:hover { color: var(--throat); }
+    .navlinks a:hover { color: var(--accent); }
 
     .navlinks .pill {
-      background: var(--throat);
+      background: var(--accent);
       color: var(--paper);
       padding: .42rem 1rem;
       border-radius: 100px;
@@ -105,8 +124,8 @@
     }
 
     .navlinks .pill:hover {
-      background: var(--throat-lt);
-      outline: 1.5px solid var(--gold-lt);
+      background: var(--accent-lt);
+      outline: 1.5px solid var(--gold);
       outline-offset: 1px;
     }
 
@@ -122,14 +141,14 @@
       transition: border-color .2s, color .2s;
     }
 
-    .theme-toggle:hover { border-color: var(--gold-lt); color: var(--ink); }
+    .theme-toggle:hover { border-color: var(--gold); color: var(--ink); }
 
     /* ─── page ─── */
     .page { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 5rem; }
 
     /* ─── hero ─── */
     .hero {
-      padding: 6rem 0 4rem;
+      padding: 7rem 0 5rem;
       border-bottom: 1px solid var(--line);
     }
 
@@ -138,8 +157,8 @@
       font-style: italic;
       font-size: .88rem;
       font-weight: 300;
-      color: var(--throat);
-      margin-bottom: 1rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
       letter-spacing: .06em;
     }
 
@@ -152,23 +171,34 @@
       color: var(--ink);
       max-width: 680px;
       margin-bottom: 1.4rem;
-      border-bottom: 2px solid var(--gold-lt);
-      padding-bottom: .6rem;
-      display: inline-block;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
     }
 
     .subhead {
       font-size: 1.05rem;
       color: var(--muted);
-      max-width: 520px;
-      line-height: 1.65;
-      margin-bottom: 2.4rem;
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 1.4rem;
       font-weight: 300;
     }
 
-    .ctaRow { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+    .subhead strong { color: var(--ink); font-weight: 500; }
 
-    .micro { font-size: .78rem; color: var(--muted); letter-spacing: .03em; }
+    .hero-note {
+      font-size: .82rem;
+      color: var(--muted);
+      letter-spacing: .03em;
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    .ctaRow { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
 
     /* ─── buttons ─── */
     .btn {
@@ -184,32 +214,49 @@
       border: 1.5px solid transparent;
     }
 
-    .btn.primary { background: var(--throat); color: #fff; border-color: var(--throat); }
-    .btn.primary:hover { background: var(--throat-lt); border-color: var(--throat-lt); }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn.primary:hover { background: var(--accent-lt); border-color: var(--accent-lt); }
     .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
-    .btn.ghost:hover { border-color: var(--throat); color: var(--throat); }
+    .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ─── sections ─── */
-    section { margin-top: 3.5rem; }
+    section { margin-top: 5rem; }
+
+    .section-label {
+      font-family: var(--serif);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+    }
 
     /* ─── cards ─── */
     .card {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: var(--r);
       padding: 2.2rem 2.4rem;
     }
 
     .card h2 {
       font-family: var(--serif);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      letter-spacing: -.025em;
+      letter-spacing: -.02em;
       margin-bottom: 1rem;
       color: var(--ink);
     }
 
-    .card p { color: var(--muted); line-height: 1.7; }
+    .card p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: .97rem;
+      margin-bottom: .8rem;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
 
     /* ─── work items ─── */
     .item {
@@ -232,20 +279,20 @@
     .textLink {
       font-size: .85rem;
       font-weight: 500;
-      color: var(--throat);
+      color: var(--accent);
       text-decoration: none;
       letter-spacing: .01em;
       transition: color .2s;
     }
 
-    .textLink:hover { color: var(--gold-lt); }
+    .textLink:hover { color: var(--gold); }
 
     /* ─── contact ─── */
     .contactRow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; }
 
     /* ─── footer ─── */
     .footer {
-      margin-top: 4rem;
+      margin-top: 5rem;
       padding-top: 2rem;
       border-top: 1px solid var(--line);
       display: flex; justify-content: space-between; align-items: center;
@@ -254,10 +301,9 @@
       color: var(--muted);
     }
 
-    .footer a { color: var(--throat); text-decoration: none; }
-    .footer a:hover { color: var(--gold-lt); }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { color: var(--gold); }
 
-    /* ─── misc ─── */
     .muted { color: var(--muted); }
 
     /* ─── animations ─── */
@@ -266,11 +312,11 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero .kicker  { animation: fadeUp .5s ease both; animation-delay: .05s; }
-    .hero h1       { animation: fadeUp .5s ease both; animation-delay: .12s; }
-    .hero .subhead { animation: fadeUp .5s ease both; animation-delay: .2s; }
-    .hero .ctaRow  { animation: fadeUp .5s ease both; animation-delay: .28s; }
-    .hero .micro   { animation: fadeUp .5s ease both; animation-delay: .34s; }
+    .hero .kicker    { animation: fadeUp .5s ease both; animation-delay: .05s; }
+    .hero h1         { animation: fadeUp .5s ease both; animation-delay: .12s; }
+    .hero .subhead   { animation: fadeUp .5s ease both; animation-delay: .2s; }
+    .hero .ctaRow    { animation: fadeUp .5s ease both; animation-delay: .28s; }
+    .hero .hero-note { animation: fadeUp .5s ease both; animation-delay: .34s; }
   </style>
 </head>
 <body>
@@ -285,57 +331,100 @@
   </header>
 
   <main class="page">
+
+    <!-- ─── hero ─── -->
     <section class="hero">
-      <p class="kicker">techtuition · collaboration design for teams building the future</p>
-      <h1>For the next era of distributed work</h1>
-      <p class="subhead">Human-AI collaboration consulting for complexicity, coordination, and AI-supported work.</p>
+      <p class="kicker">techtuition · fractal awareness for the next era of work</p>
+      <h1>The framework underneath <em>the framework.</em></h1>
+      <p class="subhead">
+        Four years of teaching workshops to Fortune 500 teams revealed something:
+        it kept landing because there's a <strong>fractal architecture underneath it.</strong>
+        That architecture is what Techtuition teaches now.
+      </p>
+      <p class="subhead">
+        A multiscalar, quantum-sequenced approach to how individuals, teams, and organisations
+        actually cohere — with practical implications for operations, collaboration, and governance.
+      </p>
       <div class="ctaRow">
         <a class="btn primary" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join the workshop waitlist</a>
-        <a class="btn ghost" href="#contact">contact</a>
+        <a class="btn ghost" href="#work">see the work</a>
       </div>
-      <p class="micro">limited seats · beta pricing · practical, tool-agnostic</p>
+      <p class="hero-note">limited seats · ten slides · it lands every time</p>
     </section>
 
-    <section id="about" class="card">
-      <h2>About</h2>
-      <p>Techtuition guides and mentors teams to design calm, scalable operations — AI-enabled, systems-led, and built for distributed work. Enabling stronger foundations with AI systems, governance, and collaboration rituals that keep work clear and regenerative.</p>
-    </section>
-
-    <section id="work" class="card">
-      <h2>Work with Techtuition</h2>
-
-      <div class="item">
-        <h3>Beta workshop (paid)</h3>
-        <p>A live, hands-on session on the geometry of complexity, coordination, and collaboration — leave with guidance, templates, and a playbook.</p>
-        <a class="textLink" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join the waitlist →</a>
-      </div>
-
-      <div class="item">
-        <h3>Embedded education</h3>
-        <p>Deiadora plugs into your team for a defined period and builds the geometric operating patterns with you.</p>
-        <a class="textLink" href="#contact">contact to discuss →</a>
-      </div>
-
-      <div class="item">
-        <h3>Mentorship</h3>
-        <p>1:1 or small-group support for maintainers and leads building durable team systems.</p>
-        <a class="textLink" href="#contact">contact to discuss →</a>
+    <!-- ─── about ─── -->
+    <section id="about">
+      <p class="section-label">what this is</p>
+      <div class="card">
+        <h2>The teaching that was always the framework.</h2>
+        <p>
+          Techtuition is built on a multiscalar framework — individual, team, organisation —
+          and a quantum sequence (0–9) that maps to the body, the group, and the collective.
+          It applies at every scale because it describes the actual architecture of coherent systems,
+          not a methodology invented for the workplace.
+        </p>
+        <p>
+          The practical output: operations, collaboration, and governance patterns and rituals
+          that cohere rather than extract. Teams stop running on nineteenth-century Newtonian assumptions
+          and start running on the physics of how complexity actually organises itself.
+        </p>
+        <p>
+          The foundational book — <em>Quantum Currency: Field Research on Human Coherence</em> —
+          is the formal statement of what four years of workshops and thirteen years of field research produced.
+          The workshops are where it becomes operational.
+        </p>
       </div>
     </section>
 
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p class="muted">For embedded education, mentorship, or bringing the beta to your org.</p>
-      <div class="contactRow">
-        <a class="btn primary" href="/cdn-cgi/l/email-protection#8ee6ebe2e2e1cefaebede6fafbe7fae7e1e0a0efe7b1fdfbece4ebedfab3faebede6fafbe7fae7e1e0abbcbee7e0fffbe7fcf7">email <span class="__cf_email__" data-cfemail="69010c050506291d0c0a011d1c001d000607470800">[email&#160;protected]</span></a>
-        <a class="btn ghost" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join waitlist</a>
+    <!-- ─── work ─── -->
+    <section id="work">
+      <p class="section-label">work with techtuition</p>
+      <div class="card">
+        <h2>Three ways in.</h2>
+
+        <div class="item">
+          <h3>Beta workshop (paid)</h3>
+          <p>A live, hands-on session on the geometry of complexity, coordination, and collaboration —
+            the fractal framework in practice. Leave with the mental model, the templates, and a playbook
+            you can use immediately.</p>
+          <a class="textLink" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join the waitlist →</a>
+        </div>
+
+        <div class="item">
+          <h3>Embedded education</h3>
+          <p>Deiadora works inside your team for a defined period — building the geometric operating
+            patterns with you, not just presenting them at you. For teams ready to change how they
+            actually work, not just how they talk about it.</p>
+          <a class="textLink" href="#contact">contact to discuss →</a>
+        </div>
+
+        <div class="item">
+          <h3>Mentorship</h3>
+          <p>1:1 or small-group support for leads and maintainers building durable team systems —
+            especially those who already sense the fractal architecture but haven't had language for it yet.</p>
+          <a class="textLink" href="#contact">contact to discuss →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── contact ─── -->
+    <section id="contact">
+      <div class="card">
+        <h2>Get in touch</h2>
+        <p>For embedded education, mentorship, or bringing the beta workshop to your organisation.</p>
+        <div class="contactRow">
+          <a class="btn primary" href="/cdn-cgi/l/email-protection#8ee6ebe2e2e1cefaebede6fafbe7fae7e1e0a0efe7b1fdfbece4ebedfab3faebede6fafbe7fae7e1e0abbcbee7e0fffbe7fcf7">email deiadora</a>
+          <a class="btn ghost" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join waitlist</a>
+        </div>
       </div>
     </section>
 
     <footer class="footer">
-      <p>techtuition · expression · egg of life</span></p>
+      <p>techtuition · expression · egg of life</p>
       <p class="muted">© <span id="year"></span> · part of the <a href="https://deiadora.com">deiadora ecosystem</a> 🌿</p>
     </footer>
+
   </main>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
