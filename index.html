@@ -349,7 +349,7 @@
         <a class="btn primary" href="https://techtuition.getform.com/v0p8m" target="_blank" rel="noopener">join the workshop waitlist</a>
         <a class="btn ghost" href="#work">see the work</a>
       </div>
-      <p class="hero-note">limited seats · ten slides · it lands every time</p>
+      <p class="hero-note">finite yet boundless slides · it lands every time</p>
     </section>
 
     <!-- ─── about ─── -->
@@ -433,14 +433,14 @@
     const toggle = document.getElementById("themeToggle");
     const saved = localStorage.getItem("theme-techtuition") || "light";
     document.documentElement.setAttribute("data-theme", saved);
-    toggle.textContent = saved === "dark" ? "☀️" : "🌙";
+    toggle.textContent = saved === "dark" ? "🌙" : "☀️";
 
     toggle.addEventListener("click", () => {
       const current = document.documentElement.getAttribute("data-theme");
       const next = current === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
       localStorage.setItem("theme-techtuition", next);
-      toggle.textContent = next === "dark" ? "☀️" : "🌙";
+      toggle.textContent = next === "dark" ? "🌙" : "☀️";
     });
   </script>
 </body>
